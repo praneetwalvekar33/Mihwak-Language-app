@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
+import android.widget.ImageView;
 
 import java.util.ArrayList;
 
@@ -57,7 +58,25 @@ public class WordsAdapter extends ArrayAdapter<Words> {
         //  Set the set text in the TextView for english translation
         englishTextView.setText(currentWord.getEnglishWord());
 
-        //  return the entire listItemView (Containing the 2 TextView to displayed on Listiew
+        //  Find the ImageView in the list_item.xml layout with version id name for image
+        ImageView wordImageView = (ImageView) listItemView.findViewById(R.id.image_for_word);
+        //  Set the set text in the TextView for english translation
+
+        //  To check if the current value has image assigned to it
+        if(currentWord.hasImage()) {
+            //  Set the ImageView variable with the image resource
+            wordImageView.setImageResource(currentWord.getImageForWord());
+
+            //set the visibility of the resource
+            wordImageView.setVisibility(View.VISIBLE);
+        }
+        else{
+            //otherwise hide the Image
+            wordImageView.setVisibility(View.GONE);
+        }
+
+
+        //  return the entire listItemView (Containing the 2 TextView and ImageView to be displayed on Listiew
         return listItemView;
     }
 }
