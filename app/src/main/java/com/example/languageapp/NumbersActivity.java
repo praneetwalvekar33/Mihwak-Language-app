@@ -2,11 +2,7 @@ package com.example.languageapp;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.widget.ArrayAdapter;
-import android.widget.GridView;
-import android.widget.LinearLayout;
 import android.widget.ListView;
-import android.widget.TextView;
 
 import java.util.ArrayList;
 
@@ -15,25 +11,25 @@ public class NumbersActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_numbers);
+        setContentView(R.layout.words_lists);
         /**
          * ArrayList created to add object of class Words
          */
         ArrayList<Words> words = new ArrayList<Words>();
-        words.add(new Words("lutti","One"));
-        words.add(new Words("otiiko","Two"));
-        words.add(new Words("tolookosu","Three"));
-        words.add(new Words("oyyisa","Four"));
-        words.add(new Words("massokka","Five"));
-        words.add(new Words("temmokka","Six"));
-        words.add(new Words("kenekaku","Seven"));
-        words.add(new Words("kawinta","Eight"));
-        words.add(new Words("wo'e","Nine"));
-        words.add(new Words("na'aacha","Ten"));
+        words.add(new Words("lutti","One", R.drawable.number_one));
+        words.add(new Words("otiiko","Two", R.drawable.number_two));
+        words.add(new Words("tolookosu","Three", R.drawable.number_three));
+        words.add(new Words("oyyisa","Four", R.drawable.number_four));
+        words.add(new Words("massokka","Five", R.drawable.number_five));
+        words.add(new Words("temmokka","Six", R.drawable.number_six));
+        words.add(new Words("kenekaku","Seven", R.drawable.number_seven));
+        words.add(new Words("kawinta","Eight", R.drawable.number_eight));
+        words.add(new Words("wo'e","Nine", R.drawable.number_nine));
+        words.add(new Words("na'aacha","Ten", R.drawable.number_ten));
 
 
         //ArrayAdapter created to control the data source words
-        ArrayAdapter<Words> itemsAdapter = new ArrayAdapter<Words>(this, R.layout.list_item, words);
+        WordsAdapter itemsAdapter = new WordsAdapter(this, words);
 
         ListView listView = (ListView) findViewById(R.id.list);
 
