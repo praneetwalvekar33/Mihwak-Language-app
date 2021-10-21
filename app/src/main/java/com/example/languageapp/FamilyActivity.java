@@ -29,7 +29,7 @@ public class FamilyActivity extends AppCompatActivity {
 
 
         //ArrayAdapter created to control the data source words
-        WordsAdapter itemsAdapter = new WordsAdapter(this, words);
+        WordsAdapter itemsAdapter = new WordsAdapter(this, words, R.color.category_family);
 
         ListView listView = (ListView) findViewById(R.id.list);
 

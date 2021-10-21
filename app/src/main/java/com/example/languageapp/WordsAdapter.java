@@ -3,10 +3,12 @@ package com.example.languageapp;
 import android.app.Activity;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.ImageView;
 
@@ -14,19 +16,23 @@ import java.util.ArrayList;
 
 public class WordsAdapter extends ArrayAdapter<Words> {
 
+    private int colorsId;
     /**
      * Custom Constructor (Does not mirror the parent constructor)
      * The context is used to inflate the layout file. The list is used as the date to populate
      * the ListView
      * @param context Current context used to inflate the layout file
      * @param words  A list Words object to display in the List
+     * @param color  A color to be added for particular category of words
      */
-    public WordsAdapter(Activity context, ArrayList<Words> words){
+    public WordsAdapter(Activity context, ArrayList<Words> words, int color){
         //  Here we initialize the ArrayAdapter internal storage for context and list
         //  Second argument is used when the ArrayAdapter is populating single TextView
         //  Because this is a custom adapter for two TextViews  the adapter is not
         //  going to use this second argument, so it can be any value. Here, we used 0.
         super(context, 0, words);
+        colorsId = color;
+
     }
 
     /**
@@ -74,6 +80,12 @@ public class WordsAdapter extends ArrayAdapter<Words> {
             //otherwise hide the Image
             wordImageView.setVisibility(View.GONE);
         }
+
+        //To set the background color of the linear layout
+        LinearLayout linearForText = (LinearLayout) listItemView.findViewById(R.id.linearlayout_for_text);
+        //
+        int color = ContextCompat.getColor(getContext(), colorsId);
+        linearForText.setBackgroundColor(color);
 
 
         //  return the entire listItemView (Containing the 2 TextView and ImageView to be displayed on Listiew

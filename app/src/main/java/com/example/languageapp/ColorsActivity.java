@@ -28,7 +28,7 @@ public class ColorsActivity extends AppCompatActivity {
 
 
         //ArrayAdapter created to control the data source words
-        WordsAdapter itemsAdapter = new WordsAdapter(this, words);
+        WordsAdapter itemsAdapter = new WordsAdapter(this, words, R.color.category_colors);
 
         ListView listView = (ListView) findViewById(R.id.list);
 
